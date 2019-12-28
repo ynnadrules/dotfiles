@@ -49,3 +49,7 @@
 	template = ~/.dotfiles/git/template.txt
 [log]
 	showSignature = false
+[url "git@bitbucket.org:"]
+	insteadOf = https://bitbucket.org/
+[url "git@github.com:"]
+	insteadOf = https://github.com/

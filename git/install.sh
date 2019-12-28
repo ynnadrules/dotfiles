@@ -17,3 +17,10 @@ if command -v code >/dev/null 2>&1; then
 	git config --global merge.tool vscode
 	git config --global mergetool.vscode.cmd "code --wait $MERGED"
 fi
+
+# image diffing
+if command -v spaceman-diff >/dev/null 2>&1; then
+  mkdir -p $HOME/.config/git
+  ln -sf "$DOTFILES/git/attributes" $HOME/.config/git/attributes
+fi
+

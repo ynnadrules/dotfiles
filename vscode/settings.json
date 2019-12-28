@@ -1,80 +1,73 @@
 {
-  "editor.fontSize": 15,
-  "editor.formatOnSave": true,
-  "editor.rulers": [
-    80,
-    120
-  ],
-  "editor.tabSize": 4,
-  "editor.trimAutoWhitespace": true,
-  "editor.tabCompletion": "on",
-  "explorer.openEditors.visible": 0,
-  "window.restoreWindows": "none",
-  "terminal.external.osxExec": "iTerm.app",
-  "terminal.integrated.fontSize": 14,
-  "files.autoSave": "onFocusChange",
-  "extensions.autoUpdate": true,
-  "editor.cursorBlinking": "phase",
-  "window.title": "${activeEditorMedium}${separator}${rootName}",
-  "files.trimTrailingWhitespace": true,
-  "editor.minimap.enabled": false,
-  "editor.renderWhitespace": "none",
-  "workbench.colorTheme": "Dracula",
-  "window.zoomLevel": 0,
-  "extensions.ignoreRecommendations": false,
-  "go.coverageDecorator": {
-    "type": "gutter"
-  },
-  "search.exclude": {
-    "**/node_modules": true,
-    "**/bower_components": true,
-    "/vendor": true
-  },
-  "workbench.startupEditor": "newUntitledFile",
-  "workbench.fontAliasing": "auto",
-  "workbench.editor.showIcons": true,
-  "explorer.confirmDragAndDrop": false,
-  "search.smartCase": true,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
   "files.associations": {
-    "*.tmpl": "gotemplate"
+    "*.podspec": "ruby",
+    "Podfile": "ruby",
+    "Vagrantfile": "ruby",
+    "*.inc": "php",
+    "*.install": "php",
+    "*.module": "php",
+    "Matchfile": "ruby",
+    "Deliverfile": "ruby",
+    "*.prisma": "graphql",
+    "SConscript": "python",
+    "SConstruct": "python",
+    ".envrc": "shellscript"
   },
-  "go.testTimeout": "3m",
+  "files.autoSave": "onFocusChange",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "window.zoomLevel": 1,
+  "materialTheme.cache.workbench.settings": {
+    "themeColours": "Light",
+    "accentPrevious": "Blue"
+  },
+  "workbench.colorTheme": "Material Theme Darker",
+  "workbench.colorCustomizations": {
+    "activityBarBadge.background": "#2979FF",
+    "list.activeSelectionForeground": "#2979FF",
+    "list.inactiveSelectionForeground": "#2979FF",
+    "list.highlightForeground": "#2979FF",
+    "scrollbarSlider.activeBackground": "#2979FF50",
+    "editorSuggestWidget.highlightForeground": "#2979FF",
+    "textLink.foreground": "#2979FF",
+    "progressBar.background": "#2979FF",
+    "pickerGroup.foreground": "#2979FF",
+    "tab.activeBorder": "#2979FF",
+    "notificationLink.foreground": "#2979FF",
+    "editorWidget.resizeBorder": "#2979FF",
+    "editorWidget.border": "#2979FF",
+    "settings.modifiedItemIndicator": "#2979FF",
+    "settings.modifiedItemForeground": "#2979FF",
+    "settings.headerForeground": "#2979FF",
+    "panelTitle.activeBorder": "#2979FF",
+    "breadcrumb.activeSelectionForeground": "#2979FF",
+    "menu.selectionForeground": "#2979FF",
+    "menubar.selectionForeground": "#2979FF"
+  },
+  "extensions.ignoreRecommendations": true,
+  "editor.fontSize": 13,
+  "[javascript]": {},
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  "workbench.iconTheme": "eq-material-theme-icons-darker",
+  "editor.fontWeight": "500",
+  "materialTheme.autoApplyIcons": true,
+  "materialTheme.accent": "Blue",
   "breadcrumbs.enabled": true,
-  "telemetry.enableTelemetry": false,
-  "terraform.telemetry.enabled": false,
-  "terraform.indexing.enabled": false,
-  "terraform.languageServer.enabled": true,
-  "telemetry.enableCrashReporter": false,
-  "go.useCodeSnippetsOnFunctionSuggest": true,
-  "go.formatTool": "goimports",
-  "search.useGlobalIgnoreFiles": true,
-  "workbench.editor.highlightModifiedTabs": true,
-  "search.showLineNumbers": true,
-  "ruby.intellisense": "rubyLocate",
-  "ruby.format": "rubocop",
-  "ruby.codeCompletion": "rcodetools",
-  "ruby.useLanguageServer": true,
-  "go.autocompleteUnimportedPackages": true,
-  "editor.fontWeight": "600",
-  "terminal.integrated.cursorBlinking": true,
-  "go.coverOnSingleTest": true,
-  "terminal.integrated.cursorStyle": "line",
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "go.useLanguageServer": false,
-  "go.alternateTools": {
-    "go-langserver": "gopls"
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
   },
-  "go.languageServerExperimentalFeatures": {
-    "format": true,
-    "autoComplete": true
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": false
   },
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": true
-  },
-  "window.newWindowDimensions": "maximized",
-  "go.buildFlags": [
-    "-v"
-  ],
-  "editor.fontFamily": "Hack, 'Source Code Pro', Menlo, Monaco, 'Courier New', monospace",
-  "editor.smoothScrolling": true
+  "eslint.autoFixOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "editor.multiCursorModifier": "alt",
+  "elixirLS.suggestSpecs": false,
+  "editor.renderWhitespace": "all",
+  "terminal.integrated.rendererType": "dom",
+  "[elixir]": {}
 }

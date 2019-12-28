@@ -10,6 +10,6 @@ zsh-users/zsh-completions
 zsh-users/zsh-autosuggestions
 
 # these should be at last!
-sindresorhus/pure
+denysdovhan/spaceship-prompt
 zdharma/fast-syntax-highlighting
 zsh-users/zsh-history-substring-search
