@@ -1,4 +1,4 @@
-# carlos' dotfiles
+# danny's dotfiles
 
 [![Build Status][tb]][tp]
 [![Powered by Antibody][ab]][ap]
@@ -11,8 +11,8 @@
 
 [ap]: https://github.com/getantibody/antibody
 [ab]: https://img.shields.io/badge/powered%20by-antibody-blue.svg?style=flat-square
-[tb]: https://img.shields.io/travis/caarlos0/dotfiles/master.svg?style=flat-square
-[tp]: https://travis-ci.org/caarlos0/dotfiles
+[tb]: https://img.shields.io/travis/ynnadrules/dotfiles/master.svg?style=flat-square
+[tp]: https://travis-ci.org/ynnadrules/dotfiles
 [scrn1]: /docs/screenshot1.png
 [scrn2]: /docs/screenshot2.png
 
@@ -33,7 +33,7 @@ First, make sure you have all those things installed:
 Then, run these steps:
 
 ```console
-$ git clone https://github.com/caarlos0/dotfiles.git ~/.dotfiles
+$ git clone https://github.com/ynnadrules/dotfiles.git ~/.dotfiles
 $ cd ~/.dotfiles
 $ ./script/bootstrap
 $ zsh # or just close and open your terminal again.
@@ -82,4 +82,11 @@ Theme is **[Dracula](https://draculatheme.com)** and the font is
 Feel free to contribute. Pull requests will be automatically
 checked/linted with [Shellcheck](https://github.com/koalaman/shellcheck)
 and [shfmt](https://github.com/mvdan/sh).
+
+## Credits
+Heavily based on the dotfiles of the following folks:
+- [Carlos Alexandro Becker](https://github.com/caarlos0)
+- [Zach Holman](https://github.com/holman)
+- [Mathias Bynens](https://github.com/mathiasbynens)
+- [Nick S. Plekhanov](https://github.com/nicksp)
 
