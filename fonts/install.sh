@@ -7,7 +7,7 @@ install() {
 if [ "$(uname -s)" = "Darwin" ]; then
 	if command -v brew >/dev/null 2>&1; then
 		brew tap homebrew/cask-fonts
-		brew cask install font-source-code-pro font-fira-code font-fira-mono-for-powerline font-fira-mono
+		brew cask install font-source-code-pro font-fira-code font-fira-mono-for-powerline font-fira-mono font-input
 	else
 		install ~/Library/Fonts
 	fi

@@ -69,5 +69,8 @@
   "elixirLS.suggestSpecs": false,
   "editor.renderWhitespace": "all",
   "terminal.integrated.rendererType": "dom",
-  "[elixir]": {}
+  "[elixir]": {},
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }

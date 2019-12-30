@@ -230,6 +230,9 @@ chflags nohidden ~/Library
 echo "  › Show the /Volumes folder"
 sudo chflags nohidden /Volumes
 
+echo "  › Show all files"
+defaults write  com.apple.finder AppleShowAllFiles -bool true
+
 echo "  › Expand the following File Info panes:"
 # “General”, “Open with”, and “Sharing & Permissions”
 defaults write com.apple.finder FXInfoPanesExpanded -dict \
@@ -355,7 +358,7 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 echo "  › Show the full URL in the address bar (note: this still hides the scheme)"
 defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
 
-echo "  › Set Safari’s home page to `about:blank` for faster loading"
+echo "  › Set Safari’s home page to 'about:blank' for faster loading"
 defaults write com.apple.Safari HomePage -string "about:blank"
 
 echo "  › Prevent Safari from opening ‘safe’ files automatically after downloading"
