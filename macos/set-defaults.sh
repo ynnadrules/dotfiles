@@ -24,13 +24,13 @@ unload_agent() {
 	launchctl unload -w "$1" >/dev/null 2>&1
 }
 
-test -z "$TRAVIS_JOB_ID" && sudo -v
+sudo -v
 
 echo ""
 echo "› System:"
 
 echo "  › Set computer name"
-name="expanse"
+name="terminus"
 sudo scutil --set ComputerName "${name}"
 sudo scutil --set HostName "${name}"
 sudo scutil --set LocalHostName "${name}"
@@ -102,9 +102,6 @@ defaults write com.apple.helpviewer DevMode -bool true
 echo "  › Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window"
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
-echo "  › Restart automatically if the computer freezes"
-sudo systemsetup -setrestartfreeze on
-
 echo "  › Set dark interface style"
 defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
 
@@ -117,14 +114,8 @@ defaults write NSGlobalDomain AppleHighlightColor -string "0.847059 0.847059 0.8
 echo "  › Show battery percent"
 defaults write com.apple.menuextra.battery ShowPercent -bool true
 
-if [ -n "$TRAVIS_JOB_ID" ]; then
-  echo "  › Disable the sound effects on boot"
-  sudo nvram SystemAudioVolume=" "
-
-	echo "  › Speed up wake from sleep to 24 hours from an hour"
-	# http://www.cultofmac.com/221392/quick-hack-speeds-up-retina-macbooks-wake-from-sleep-os-x-tips/
-	sudo pmset -a standbydelay 86400
-fi
+echo "  › Disable the sound effects on boot"
+sudo nvram SystemAudioVolume=" "
 
 echo "  › Removing duplicates in the 'Open With' menu"
 /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister \
@@ -359,7 +350,7 @@ echo "  › Show the full URL in the address bar (note: this still hides the sch
 defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
 
 echo "  › Set Safari’s home page to 'about:blank' for faster loading"
-defaults write com.apple.Safari HomePage -string "about:blank"
+# defaults write com.apple.Safari HomePage -string "about:blank"
 
 echo "  › Prevent Safari from opening ‘safe’ files automatically after downloading"
 defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
@@ -418,48 +409,103 @@ defaults write com.apple.Safari ProxiesInBookmarksBar "()"
 echo "  › Disable Safari’s thumbnail cache for History and Top Sites"
 defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
 
-echo "  › Ensure backswipe in Chrome"
+###############################################################################
+# Energy saving                                                               #
+###############################################################################
+
+# Enable lid wakeup
+sudo pmset -a lidwake 1
+
+# Restart automatically on power loss
+sudo pmset -a autorestart 1
+
+# Restart automatically if the computer freezes
+sudo systemsetup -setrestartfreeze on
+
+# Sleep the display after 15 minutes
+sudo pmset -a displaysleep 15
+
+# Disable machine sleep while charging
+sudo pmset -c sleep 0
+
+# Set machine sleep to 5 minutes on battery
+sudo pmset -b sleep 5
+
+# Set standby delay to 24 hours (default is 1 hour)
+sudo pmset -a standbydelay 86400
+
+# Never go into computer sleep mode
+sudo systemsetup -setcomputersleep Off > /dev/null
+
+# Hibernation mode
+# 0: Disable hibernation (speeds up entering sleep mode)
+# 3: Copy RAM to disk so the system state can still be restored in case of a
+#    power failure.
+sudo pmset -a hibernatemode 0
+
+# Remove the sleep image file to save disk space
+sudo rm /private/var/vm/sleepimage
+# Create a zero-byte file instead…
+sudo touch /private/var/vm/sleepimage
+# …and make sure it can’t be rewritten
+sudo chflags uchg /private/var/vm/sleepimage
+
+
+###############################################################################
+# Google Chrome & Google Chrome Canary                                        #
+###############################################################################
+
+# Disable the all too sensitive backswipe on trackpads
 defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool true
+defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -bool true
 
-#############################
+# Use the system-native print preview dialog
+defaults write com.google.Chrome DisablePrintPreview -bool true
+defaults write com.google.Chrome.canary DisablePrintPreview -bool true
 
-echo ""
-echo "› Transmission:"
-echo "  › Use ~/Downloads/Incomplete to store incomplete downloads"
-defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
-defaults write org.m0k.transmission IncompleteDownloadFolder -string "$HOME/Downloads/Incomplete"
+# Expand the print dialog by default
+defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
+defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool true
 
-echo "  › Don't prompt for confirmation before downloading"
-defaults write org.m0k.transmission DownloadAsk -bool false
+# #############################
 
-echo "  › Trash original torrent files"
-defaults write org.m0k.transmission DeleteOriginalTorrent -bool true
+# echo ""
+# echo "› Transmission:"
+# echo "  › Use ~/Downloads/Incomplete to store incomplete downloads"
+# defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
+# defaults write org.m0k.transmission IncompleteDownloadFolder -string "$HOME/Downloads/Incomplete"
 
-echo "  › Hide the donate message"
-defaults write org.m0k.transmission WarningDonate -bool false
+# echo "  › Don't prompt for confirmation before downloading"
+# defaults write org.m0k.transmission DownloadAsk -bool false
 
-echo "  › Hide the legal disclaimer"
-defaults write org.m0k.transmission WarningLegal -bool false
+# echo "  › Trash original torrent files"
+# defaults write org.m0k.transmission DeleteOriginalTorrent -bool true
 
-echo "  › Auto-add .torrent files in ~/Downloads"
-defaults write org.m0k.transmission AutoImportDirectory -string "$HOME/Downloads"
+# echo "  › Hide the donate message"
+# defaults write org.m0k.transmission WarningDonate -bool false
 
-echo "  › Auto-resize the window to fit transfers"
-defaults write org.m0k.transmission AutoSize -bool true
+# echo "  › Hide the legal disclaimer"
+# defaults write org.m0k.transmission WarningLegal -bool false
 
-echo "  › Auto update to betas"
-defaults write org.m0k.transmission AutoUpdateBeta -bool true
+# echo "  › Auto-add .torrent files in ~/Downloads"
+# defaults write org.m0k.transmission AutoImportDirectory -string "$HOME/Downloads"
 
-echo "  › Set up the best block list"
-defaults write org.m0k.transmission EncryptionRequire -bool true
-defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
-defaults write org.m0k.transmission BlocklistNew -bool true
-defaults write org.m0k.transmission BlocklistURL -string "http://john.bitsurge.net/public/biglist.p2p.gz"
+# echo "  › Auto-resize the window to fit transfers"
+# defaults write org.m0k.transmission AutoSize -bool true
 
-echo "  › Randomize port on launch"
-defaults write org.m0k.transmission RandomPort -bool true
+# echo "  › Auto update to betas"
+# defaults write org.m0k.transmission AutoUpdateBeta -bool true
 
-#############################
+# echo "  › Set up the best block list"
+# defaults write org.m0k.transmission EncryptionRequire -bool true
+# defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
+# defaults write org.m0k.transmission BlocklistNew -bool true
+# defaults write org.m0k.transmission BlocklistURL -string "http://john.bitsurge.net/public/biglist.p2p.gz"
+
+# echo "  › Randomize port on launch"
+# defaults write org.m0k.transmission RandomPort -bool true
+
+# #############################
 
 echo ""
 echo "› Mail:"
@@ -490,36 +536,19 @@ echo "  ›  Disable send and reply animations in Mail.app"
 defaults write com.apple.mail DisableReplyAnimations -bool true
 defaults write com.apple.mail DisableSendAnimations -bool true
 
-#############################
+###############################################################################
+# Time Machine                                                                #
+###############################################################################
 
-echo ""
-echo "› Time Machine:"
-echo "  › Prevent Time Machine from prompting to use new hard drives as backup volume"
+# Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
+# Disable local Time Machine backups
+hash tmutil &> /dev/null && sudo tmutil disablelocal
+
 ###############################################################################
-# SSD-specific tweaks                                                         #
+# Spotlight                                                                   #
 ###############################################################################
-if [ -n "$TRAVIS_JOB_ID" ] && diskutil info disk0 | grep SSD >/dev/null 2>&1; then
-	echo "  › Disable local backups"
-	# https://classicyuppie.com/what-crap-is-this-os-xs-mobilebackups/
-	sudo tmutil disablelocal
-
-	echo "  › Disable hibernation (speeds up entering sleep mode)"
-	sudo pmset -a hibernatemode 0
-
-	echo "  › Remove the sleep image file to save disk space"
-	sudo rm /private/var/vm/sleepimage
-	echo "  › Create a zero-byte file instead..."
-	sudo touch /private/var/vm/sleepimage
-	echo "  › ...and make sure it can’t be rewritten"
-	sudo chflags uchg /private/var/vm/sleepimage
-
-	echo "  ›  Disable the sudden motion sensor as it’s not useful for SSDs"
-	sudo pmset -a sms 0
-fi
-
-#############################
 
 echo ""
 echo "› Spotlight:"
@@ -675,7 +704,7 @@ echo ""
 echo "› Messages:"
 
 # Disable automatic emoji substitution (i.e. use plain text smileys)
-# defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
+defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
 
 echo "  › Disable smart quotes as it’s annoying for messages that contain code"
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false

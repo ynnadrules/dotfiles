@@ -53,4 +53,6 @@ eval "$(direnv hook zsh)"
 
 # hook jenv
 eval "$(jenv init -)"
-# zprof
+
+# starship
+eval "$(starship init zsh)"
