@@ -17,6 +17,10 @@ alias croot='cd "$(git rev-parse --show-toplevel)"'
 # quick hack to make watch work with aliases
 alias watch='watch '
 
+alias vup='vagrant up'
+alias vdown='vagrant halt'
+alias vssh='vagrant ssh'
+
 # open, pbcopy and pbpaste on linux
 if [ "$(uname -s)" != "Darwin" ]; then
 	if [ -z "$(command -v pbcopy)" ]; then

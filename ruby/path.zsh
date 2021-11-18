@@ -1,5 +1,5 @@
 #!/bin/sh
-export PATH="$PATH:$HOME/.rbenv/bin"
+export PATH="$HOME/.rbenv/bin:$PATH"
 
 __rbenv_started=0
 

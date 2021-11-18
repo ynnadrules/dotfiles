@@ -1,5 +1,4 @@
 {
-  "editor.tabSize": 2,
   "editor.detectIndentation": false,
   "files.associations": {
     "*.podspec": "ruby",
@@ -13,12 +12,12 @@
     "*.prisma": "graphql",
     "SConscript": "python",
     "SConstruct": "python",
-    ".envrc": "shellscript"
+    ".envrc": "shellscript",
+    "*.theme": "php"
   },
   "files.autoSave": "onFocusChange",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
-  "window.zoomLevel": 1,
   "materialTheme.cache.workbench.settings": {
     "themeColours": "Light",
     "accentPrevious": "Blue"
@@ -59,7 +58,6 @@
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
   },
-  "editor.formatOnSave": true,
   "[javascript]": {
     "editor.formatOnSave": false
   },
@@ -72,5 +70,10 @@
   "[elixir]": {},
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
-  }
+  },
+  "sourcekit-lsp.serverPath": "~/Work/swift/sourcekit-lsp/.build/debug/sourcekit-lsp",
+  "sourcekit-lsp.toolchainPath": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain",
+  "sourcekit-lsp.trace.server": "verbose",
+"prettier.tabWidth": 4,
+"editor.tabSize": 2
 }

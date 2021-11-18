@@ -48,4 +48,9 @@ unset config_files updated_at
 # shellcheck disable=SC1090
 [ -f ~/.localrc ] && . ~/.localrc
 
+# hook direnv
+eval "$(direnv hook zsh)"
+
+# hook jenv
+eval "$(jenv init -)"
 # zprof

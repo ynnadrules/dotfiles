@@ -10,4 +10,6 @@ then
 
   # Use the stable version of node by default
   nvm alias default node
+else
+  nvm use default
 fi
