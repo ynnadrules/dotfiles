@@ -22,7 +22,7 @@
     "themeColours": "Light",
     "accentPrevious": "Blue"
   },
-  "workbench.colorTheme": "Material Theme Darker",
+  "workbench.colorTheme": "Eva Dark Italic",
   "workbench.colorCustomizations": {
     "activityBarBadge.background": "#2979FF",
     "list.activeSelectionForeground": "#2979FF",
@@ -75,5 +75,7 @@
   "sourcekit-lsp.toolchainPath": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain",
   "sourcekit-lsp.trace.server": "verbose",
 "prettier.tabWidth": 4,
-"editor.tabSize": 2
+"editor.tabSize": 2,
+"kotlin.languageServer.enabled": false,
+"kotlin.debugAdapter.enabled": false
 }
