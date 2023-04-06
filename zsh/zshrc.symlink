@@ -48,17 +48,10 @@ unset config_files updated_at
 # shellcheck disable=SC1090
 [ -f ~/.localrc ] && . ~/.localrc
 
-
-
 # hook direnv
 eval "$(direnv hook zsh)"
-
 # hook jenv
 eval "$(jenv init -)"
-
-# starship
-eval "$(starship init zsh)"
-
 # hook pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
@@ -67,3 +60,6 @@ fi
 if command -v pyenv-virtualenv-init > /dev/null 2>&1; then
   eval "$(pyenv virtualenv-init -)"
 fi
+
+# starship
+eval "$(starship init zsh)"
