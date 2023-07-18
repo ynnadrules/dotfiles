@@ -13,7 +13,8 @@
     "SConscript": "python",
     "SConstruct": "python",
     ".envrc": "shellscript",
-    "*.theme": "php"
+    "*.theme": "php",
+    "*.heex": "phoenix-heex"
   },
   "files.autoSave": "onFocusChange",
   "files.insertFinalNewline": true,
@@ -22,7 +23,6 @@
     "themeColours": "Light",
     "accentPrevious": "Blue"
   },
-  "workbench.colorTheme": "Eva Dark Italic",
   "workbench.colorCustomizations": {
     "activityBarBadge.background": "#2979FF",
     "list.activeSelectionForeground": "#2979FF",
@@ -64,7 +64,6 @@
   "eslint.autoFixOnSave": true,
   "eslint.alwaysShowStatus": true,
   "editor.multiCursorModifier": "alt",
-  "elixirLS.suggestSpecs": false,
   "editor.renderWhitespace": "all",
   "terminal.integrated.rendererType": "dom",
   "[elixir]": {},
@@ -77,5 +76,13 @@
 "prettier.tabWidth": 4,
 "editor.tabSize": 2,
 "kotlin.languageServer.enabled": false,
-"kotlin.debugAdapter.enabled": false
+"kotlin.debugAdapter.enabled": false,
+"workbench.preferredDarkColorTheme": "Material Theme Palenight High Contrast",
+"workbench.colorTheme": "Material Theme Lighter",
+"workbench.preferredHighContrastColorTheme": "Material Theme Palenight High Contrast",
+"workbench.preferredLightColorTheme": "Material Theme Lighter",
+"workbench.preferredHighContrastLightColorTheme": "Material Theme Lighter High Contrast",
+"editor.guides.bracketPairs": "active",
+"merge-conflict.autoNavigateNextConflict.enabled": true,
+"window.zoomLevel": 1
 }
