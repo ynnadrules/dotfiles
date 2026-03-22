@@ -12,6 +12,8 @@ export PROJECTS="$HOME/Work"
 export EDITOR='vim'
 export VEDITOR='code'
 
+export CANARY="true"
+
 # all of our zsh files
 typeset -U config_files
 config_files=($DOTFILES/*/*.zsh)
@@ -24,6 +26,9 @@ done
 # load zsh plugins
 source ~/.zsh_plugins.sh
 
+# hook brew
+ eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # load everything but the path and completion files
 for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}; do
   source "$file"
@@ -34,7 +39,6 @@ for dump in ~/.zcompdump(N.mh+24); do
   compinit
 done
 compinit -C
-
 
 # load every completion after autocomplete loads
 for file in ${(M)config_files:#*/completion.zsh}; do
@@ -47,6 +51,9 @@ unset config_files updated_at
 # want in your public, versioned repo.
 # shellcheck disable=SC1090
 [ -f ~/.localrc ] && . ~/.localrc
+
+#hook asdf
+. $(brew --prefix asdf)/libexec/asdf.sh
 
 # hook direnv
 eval "$(direnv hook zsh)"
@@ -63,3 +70,5 @@ fi
 
 # starship
 eval "$(starship init zsh)"
+
+>&2 echo "loaded ~/.zshrc"

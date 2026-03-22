@@ -1,0 +1,7 @@
+plugins=(
+  z
+  zsh-interactive-cd
+  zsh-navigation-tools
+)
+
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh

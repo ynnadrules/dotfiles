@@ -9,12 +9,19 @@
 
 ![screenshot 2][scrn2]
 
-[ap]: https://github.com/getantibody/antibody
+[ap]: https://github.com/getantibody/antibody [DEPRECATED]
 [ab]: https://img.shields.io/badge/powered%20by-antibody-blue.svg?style=flat-square
 [tb]: https://img.shields.io/travis/ynnadrules/dotfiles/master.svg?style=flat-square
-[tp]: https://travis-ci.org/ynnadrules/dotfiles
 [scrn1]: /docs/screenshot1.png
 [scrn2]: /docs/screenshot2.png
+
+## TODO:
+- Update documentation
+- Update installers for software currently in-use
+  - Starship (not spaceship)
+  - Remove antibody
+
+
 
 ## Installation
 

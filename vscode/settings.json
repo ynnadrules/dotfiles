@@ -68,7 +68,7 @@
   "terminal.integrated.rendererType": "dom",
   "[elixir]": {},
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "sourcekit-lsp.serverPath": "~/Work/swift/sourcekit-lsp/.build/debug/sourcekit-lsp",
   "sourcekit-lsp.toolchainPath": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain",
@@ -78,11 +78,14 @@
 "kotlin.languageServer.enabled": false,
 "kotlin.debugAdapter.enabled": false,
 "workbench.preferredDarkColorTheme": "Material Theme Palenight High Contrast",
-"workbench.colorTheme": "Material Theme Lighter",
+"workbench.colorTheme": "Abyss",
 "workbench.preferredHighContrastColorTheme": "Material Theme Palenight High Contrast",
-"workbench.preferredLightColorTheme": "Material Theme Lighter",
+"workbench.preferredLightColorTheme": "Eva Light",
 "workbench.preferredHighContrastLightColorTheme": "Material Theme Lighter High Contrast",
 "editor.guides.bracketPairs": "active",
 "merge-conflict.autoNavigateNextConflict.enabled": true,
-"window.zoomLevel": 1
+"elixirLS.suggestSpecs": false,
+"window.zoomLevel": 1,
+"terminal.integrated.defaultProfile.osx": "zsh",
+"editor.foldingStrategy": "indentation"
 }
