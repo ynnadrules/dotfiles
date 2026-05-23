@@ -52,9 +52,6 @@ unset config_files updated_at
 # shellcheck disable=SC1090
 [ -f ~/.localrc ] && . ~/.localrc
 
-#hook asdf
-. $(brew --prefix asdf)/libexec/asdf.sh
-
 # hook direnv
 eval "$(direnv hook zsh)"
 # hook jenv
